@@ -4,7 +4,8 @@
   "description": "테스트 주도 개발(TDD)로 NodeJS를 이용해 API서버 개발을 연습하는 프로젝트입니다.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./app.spec.js",
+    "start": "node ./app.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "mocha": "^8.3.0"
   }
 }
