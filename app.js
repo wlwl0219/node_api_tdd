@@ -3,7 +3,6 @@ const app = express();
 // 써드파티 미들웨어 install 추가 필요
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
-// const port = 3000;
 let users = [
   { id: 1, name: "alice" },
   { id: 2, name: "bek" },
@@ -61,23 +60,17 @@ app.delete("/users/:id", (req, res) => {
 
 app.post("/users", (req, res) => {
   const name = req.body.name;
-  const found = users.filter(user => user.name === name);
-  const id = Date.now();
-  const user = { id, name };
-  console.log(user);
+  const found = users.filter(user => user.name === name).length;
   if (!name) {
     return res.status(400).end();
   } else if (found) {
     return res.status(409).end();
   } else {
+    const id = Date.now();
+    const user = { id, name };
     users.push(user);
     return res.status(201).json(user);
   }
 });
-
-// 서버를 요청 대기 상태로 만듬
-// app.listen(port, () => {
-//   console.log(`Example app listening at http://localhost:${port}`);
-// });
 
 module.exports = app;
