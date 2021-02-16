@@ -1,6 +1,6 @@
 const should = require("should");
 const supertest = require("supertest");
-const app = require("./app");
+const app = require("../../app");
 
 describe("GET /users", () => {
   describe("성공", () => {
